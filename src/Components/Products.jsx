@@ -36,6 +36,7 @@ console.log(product)
           <th scope='col'>Description</th>
           <th scope='col'>Price</th>
           <th scope='col'>Stock</th>
+          <th scope='col'>Category</th>
           <th scope='col'>Action</th>
         </tr>
       </MDBTableHead>
@@ -65,6 +66,7 @@ console.log(product)
 
 </td>
 <td>
+  
     {Info.status == 1 ? 
     <MDBBadge color='success' pill>
     Active
@@ -73,6 +75,22 @@ console.log(product)
   </MDBBadge>
     }
   
+</td>
+<td>
+{
+                (() => {
+                    if(Info.category_id===1) {
+                            return (
+                                <p className='fw-normal mb-1'>MSI</p>
+                            )
+                        } else if (Info.category_id===2) {
+                            return (
+                            <p className='fw-normal mb-1'>Dell</p>
+                            )
+                        }
+                })()  
+            }
+
 </td>
 <td>
 

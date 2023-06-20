@@ -20,6 +20,7 @@ export default function UpdateProduct(data) {
     description : data.data ? data.data.description : "" , 
     price : data.data ? data.data.price : "" ,
     status : data.data ? data.data.status : "" , 
+    category_id : data.data ? data.data.category_id : "" ,
 
   })
 
@@ -70,7 +71,7 @@ console.log(data)
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Status</label>
-    <select onChange={handlechange} name="status" id="cars">
+    <select onChange={handlechange} name="status" id="status">
     <option disabled>{formvalue.status == 1 ? "Active" : "Inactive"}</option>
     <option value="1">Active</option>
     <option value="0">Inactive</option>

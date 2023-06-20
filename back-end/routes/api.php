@@ -23,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/products' ,[ProductsController::class , 'Index']);
 Route::delete('/deleteproducts/{id}' ,[ProductsController::class , 'Delete']);
 Route::post('/updateproducts/{id}' ,[ProductsController::class , 'Update']);
+Route::post('/add' ,[ProductsController::class , 'Add']);

@@ -25,9 +25,27 @@ class ProductsController extends Controller
         $products->name = $request->name; 
         $products->description = $request->description; 
         $products->price = $request->price; 
-        $products->status = $request->status; 
+        $products->status = $request->status;
+        $products->category_id = $request->category_id;
         $products->save();
         return response()->json($request);
         
+    }
+
+    public function Add(Request $request){
+        $products = new ProductsModel;
+        $products->name = $request->name; 
+        $products->description = $request->description; 
+        $products->price = $request->price; 
+        $products->status = $request->status;
+        $products->category_id = $request->category_id;
+        $results=$products->save();
+        if ($results){
+            return ["Result"=>"Data has been saved"];
+        }
+        else
+        {
+            return ["Result"=>"error"];
+        }
     }
 }

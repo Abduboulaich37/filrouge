@@ -11,6 +11,13 @@
   height: 40vmin;
   pointer-events: none;
 }
+.Add {
+  width: 100%;
+  padding: 80px;
+}
+.Add , label{
+  text-align: left;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

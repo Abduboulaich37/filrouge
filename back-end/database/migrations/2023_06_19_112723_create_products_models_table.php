@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("description");
-            $table->string('price');
-            $table->boolean('status');
-            $table->foreignId('categorie_id')->refrerences('id')->on("categories");
+            $table->string("price");
+            $table->boolean("status");
+            $table->unsignedBigInteger("category_id");
+            $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");
             $table->timestamps();
         });
     }
