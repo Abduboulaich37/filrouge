@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   MDBBtn,
   MDBModal,
@@ -20,9 +20,22 @@ export default function UpdateProduct(data) {
     description : data.data ? data.data.description : "" , 
     price : data.data ? data.data.price : "" ,
     status : data.data ? data.data.status : "" , 
-    category_id : data.data ? data.data.category_id : "" ,
+    categoriename : data.data ? data.data.categories.name : "" ,
+    
 
   })
+
+  const [allCategories, setCategories] = useState([]);
+
+  const categories = async ()=>{
+    console.log('test')
+    const res = await axios.get('http://127.0.0.1:8000/api/Categories');
+    setCategories(res.data)
+}
+useEffect(()=>{
+  categories();
+},[])
+console.log(allCategories);
 
   const Updatedata = async (e,id) => {
     e.preventDefault()
@@ -75,6 +88,14 @@ console.log(data)
     <option disabled>{formvalue.status == 1 ? "Active" : "Inactive"}</option>
     <option value="1">Active</option>
     <option value="0">Inactive</option>
+  </select>
+  <label for="exampleInputEmail1">Category</label>
+    <select onChange={handlechange}  class="form-select" name="categoriename" id="categoriename">
+      {allCategories.map((category)=>(
+        <option value={category.id} >{category.name}</option>
+      ))}
+    {console.log(formvalue.categoriename)}
+    
   </select>
   </div>
   <MDBModalFooter>

@@ -15,7 +15,7 @@ const Sidebar = () => {
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-            Sidebar
+          Lapstock
           </a>
         </CDBSidebarHeader>
 
@@ -27,6 +27,9 @@ const Sidebar = () => {
             <NavLink exact to="/Products" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table">Products</CDBSidebarMenuItem>
             </NavLink>
+            <NavLink exact to="/Categories" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="table">Categories</CDBSidebarMenuItem>
+            </NavLink>
             <NavLink exact to="/profile" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
             </NavLink>
@@ -37,6 +40,9 @@ const Sidebar = () => {
             <NavLink exact to="/Add" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="plus">Add Product</CDBSidebarMenuItem>
             </NavLink>
+            <NavLink exact to="/AddCate" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="plus">Add Categories</CDBSidebarMenuItem>
+            </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
 
@@ -46,7 +52,7 @@ const Sidebar = () => {
               padding: '20px 5px',
             }}
           >
-            Sidebar Footer
+            Logout
           </div>
         </CDBSidebarFooter>
       </CDBSidebar>

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\ProductsModel;
+use App\Models\ProductsModel;
+use App\Models\Categorie;
 
 
 class ProductsController extends Controller
@@ -11,6 +12,9 @@ class ProductsController extends Controller
     //
     public function Index(){
         $products = ProductsModel::all();
+        foreach($products as $product){
+            $product->Categories;
+        }
         return $products;
     }
 
@@ -26,7 +30,7 @@ class ProductsController extends Controller
         $products->description = $request->description; 
         $products->price = $request->price; 
         $products->status = $request->status;
-        $products->category_id = $request->category_id;
+        $products->category_id = $request->categoriename;
         $products->save();
         return response()->json($request);
         
@@ -47,5 +51,28 @@ class ProductsController extends Controller
         {
             return ["Result"=>"error"];
         }
+    }
+
+    public function AddCate(Request $request){
+        $products = new Categorie;
+        $products->name = $request->name;
+        $results=$products->save();
+        if ($results){
+            return ["Result"=>"Data has been saved"];
+        }
+        else
+        {
+            return ["Result"=>"error"];
+        }
+    }
+
+    public function Categories(){
+        $categorie = Categorie::all();
+        return $categorie;
+    }
+
+    public function DeleteCate($id){
+        $products = Categorie::find($id);
+        $products->delete();
     }
 }

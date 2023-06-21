@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   MDBInput,
   MDBCheckbox,
@@ -10,6 +10,19 @@ import { useNavigate } from 'react-router-dom';
 export default function Add() {
     const [AddProducts, setAddProducts]=useState({})
     const NavigateTo = useNavigate();
+    const [cat , setcat] = useState([])
+    const categoreis = async () =>{
+      const res = await axios.get('http://127.0.0.1:8000/api/Categories')
+      setcat(res.data)
+      console.log(res.data)
+      
+    }
+    useEffect(()=>{
+      categoreis();
+    },[])
+
+    console.log(cat)
+
     const handlechange = (event) =>{
         const {name , value} = event.target;
         setAddProducts({...AddProducts  ,[name]:value})
@@ -35,10 +48,14 @@ export default function Add() {
     <option value="0">Inactive</option>
   </select>
   <br />
+    <label for="exampleInputEmail1">Category</label>
+    <select onChange={handlechange} class="form-select" name="status" id="status">
+    {cat ? cat.map(categorie => 
+        <option value={categorie.id}>{categorie.name}</option>
 
-      <label for="category_id">Categorie</label>
-      <MDBInput onChange={handlechange} wrapperClass='mb-4' name='category_id' id='category_id' />
-
+    ):""}
+  </select>
+  <br />
       <MDBBtn type='submit' block>
         Add
       </MDBBtn>
