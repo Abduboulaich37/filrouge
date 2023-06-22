@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import AuthUser from '../AuthUser.js'
 import {
   MDBContainer,
   MDBTabs,
@@ -19,9 +18,7 @@ import axios from 'axios';
 
 
 function Login({setlogin}) {
-    const {http} = AuthUser();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+  
 
   const [justifyActive, setJustifyActive] = useState('tab1');
   const navigate = useNavigate()
@@ -89,9 +86,9 @@ function Login({setlogin}) {
           </div>
           <br />
           <label for="Name">Email</label>
-          <MDBInput onChange={e=>setEmail(e.target.value)} wrapperClass='mb-4' id='form1' type='email'/>
+          <MDBInput  wrapperClass='mb-4' id='form1' type='email'/>
           <label for="Name">Password</label>
-          <MDBInput onChange={e=>setPassword(e.target.value)} wrapperClass='mb-4' id='form2' type='password'/>
+          <MDBInput wrapperClass='mb-4' id='form2' type='password'/>
 
           <div className="d-flex justify-content-between mx-4 mb-4">
             <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />

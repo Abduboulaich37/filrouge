@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
   MDBInput,
-  MDBCheckbox,
   MDBBtn
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
@@ -27,6 +26,7 @@ export default function Add() {
         const {name , value} = event.target;
         setAddProducts({...AddProducts  ,[name]:value})
       }
+      console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
       console.log(AddProducts)
       const submitProduct = (e)=>{
         e.preventDefault()
@@ -49,7 +49,7 @@ export default function Add() {
   </select>
   <br />
     <label for="exampleInputEmail1">Category</label>
-    <select onChange={handlechange} class="form-select" name="status" id="status">
+    <select onChange={handlechange} class="form-select" name="category_id" id="category_id">
     {cat ? cat.map(categorie => 
         <option value={categorie.id}>{categorie.name}</option>
 
