@@ -16,6 +16,16 @@ class ProductsController extends Controller
             $product->Categories;
         }
         return $products;
+        
+    }
+
+    public function Demo(){
+        $products = ProductsModel::all();
+        foreach($products as $product){
+            $product->Categories;
+        }
+        return $products->count();
+        
     }
 
 

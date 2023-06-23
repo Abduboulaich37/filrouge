@@ -29,3 +29,6 @@ Route::post('/addcate' ,[ProductsController::class , 'AddCate']);
 Route::get('/Categories',[ProductsController::class , 'Categories']);
 Route::delete('/deleteCategories/{id}',[ProductsController::class , 'DeleteCate']);
 
+// 
+Route::get('/display',[ProductsController::class , 'Demo']);
+

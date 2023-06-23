@@ -2,10 +2,13 @@ import React, { useEffect , useState } from 'react';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import logo from './Images/Laptop.jpg';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Category() {
 
     const [Category , setCategory] = useState([])
+    const NavigateTo = useNavigate();
   
     const Categories = async ()=>{
         console.log('test')
@@ -19,6 +22,8 @@ export default function Category() {
         const response = await axios.delete(`http://127.0.0.1:8000/api/deleteCategories/${id}`)
         console.log("xdid")
         window.location.reload(true)
+        NavigateTo("/Products");
+
 
 
 }

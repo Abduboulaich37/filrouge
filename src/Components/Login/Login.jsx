@@ -17,7 +17,7 @@ import axios from 'axios';
 
 
 
-function Login({setlogin}) {
+function Login() {
   
 
   const [justifyActive, setJustifyActive] = useState('tab1');
@@ -37,8 +37,9 @@ function Login({setlogin}) {
     // api call
      
     // console.log(email + ' ' + password );
-    setlogin(true)
-    navigate('/Products')
+    localStorage.setItem('logged_in', true)
+    window.location.href = '/Dashboard'
+    // navigate('/Dashboard')
     
   }
   return (

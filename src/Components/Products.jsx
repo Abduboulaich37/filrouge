@@ -1,12 +1,16 @@
 import React, { useEffect , useState } from 'react';
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBInput, MDBTableBody } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import UpdateProduct from './UpdateProduct';
 import logo from './Images/Laptop.jpg';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Product() {
 
+  const [searchTerm , setsearchTerm] = useState('')
     const [product , setProduct] = useState([])
+    const NavigateTo = useNavigate();
   
     const products = async ()=>{
         console.log('test')
@@ -20,6 +24,7 @@ export default function Product() {
         const response = await axios.delete(`http://127.0.0.1:8000/api/deleteproducts/${id}`)
         console.log("xdid")
         window.location.reload(true)
+        NavigateTo("/Products");
 
 
 }
@@ -30,7 +35,10 @@ export default function Product() {
 
 console.log(product)
   return (
-    <MDBTable align='middle'>
+    <div className='table'>
+      <label for="Name">Searchbar</label>
+      <MDBInput type='text' name='name' onChange={event => {setsearchTerm(event.target.value)}} className='mb-4' id='form5Example1'  />
+        <MDBTable align='middle'>
       <MDBTableHead>
         <tr>  
           <th scope='col'>Name</th>
@@ -103,5 +111,8 @@ console.log(product)
             ):""}
       </MDBTableBody>
     </MDBTable>
+    </div>
+  
+    
   );
 }

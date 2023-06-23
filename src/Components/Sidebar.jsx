@@ -14,14 +14,14 @@ const Sidebar = () => {
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-          <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
+          <a className="text-decoration-none" style={{ color: 'inherit' }}>
           Lapstock
           </a>
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink exact to="/" activeClassName="activeClicked">
+            <NavLink exact to="/Dashboard" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/Products" activeClassName="activeClicked">
@@ -52,7 +52,11 @@ const Sidebar = () => {
               padding: '20px 5px',
             }}
           >
-            Logout
+            <CDBSidebarHeader >
+          <button className='logout' onClick={() => {localStorage.removeItem('logged_in'); window.location.reload()}}  style={{ color: 'inherit' }}>
+          logout
+          </button>
+        </CDBSidebarHeader>
           </div>
         </CDBSidebarFooter>
       </CDBSidebar>

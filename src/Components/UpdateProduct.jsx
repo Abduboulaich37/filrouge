@@ -10,9 +10,11 @@ import {
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function UpdateProduct(data) {
   const [centredModal, setCentredModal] = useState(false);
+  const NavigateTo = useNavigate();
   const [formvalue , setformvalue] = useState({
     
     id : data.data ? data.data.id : "" , 
@@ -42,7 +44,7 @@ console.log(allCategories);
     console.log(formvalue)
     const res = await axios.post(`http://127.0.0.1:8000/api/updateproducts/${id}`,formvalue)
     console.log(res.data)
-    window.location.reload(true)
+    NavigateTo("/Products");
   }
 
   const handlechange = (event) =>{

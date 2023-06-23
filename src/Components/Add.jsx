@@ -56,7 +56,7 @@ export default function Add() {
     ):""}
   </select>
   <br />
-      <MDBBtn type='submit' block>
+      <MDBBtn type='submit'  block>
         Add
       </MDBBtn>
     </form>
